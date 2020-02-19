@@ -1,0 +1,22 @@
+<!-- Indices written at Sun, 2 Jul 2017 21:17:23 WEST -->
+
+<datastore-indexes>
+
+    <!-- Used 2 times in query history -->
+    <datastore-index kind="Comment" ancestor="true" source="auto">
+        <property name="registerTime" direction="asc"/>
+    </datastore-index>
+
+    <!-- Used 1 time in query history -->
+    <datastore-index kind="UserNotification" ancestor="false" source="auto">
+        <property name="email" direction="asc"/>
+        <property name="exactModifiedDate" direction="asc"/>
+    </datastore-index>
+
+    <datastore-index kind="Report" ancestor="false" source="auto">
+        <property name="responsible" direction="asc"/>
+        <property name="points" direction="desc"/>
+    </datastore-index>
+
+
+</datastore-indexes>

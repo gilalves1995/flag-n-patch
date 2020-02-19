@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<cronentries>
+    <cron>
+        <url>/rest/task/token/clean</url>
+        <description>AuthToken cleanup routine(3 hour)</description>
+        <schedule>every 3 hours</schedule>
+    </cron>
+    <cron>
+        <url>/rest/task/reports/removeFollows</url>
+        <description>Reports RemoveFollows cleanup routine(daily)</description>
+        <schedule>every 24 hours</schedule>
+    </cron>
+    <cron>
+        <url>/rest/task/credential/email/clean</url>
+        <description>CredentialManager Email cleanup routine(3 days)</description>
+        <schedule>every 72 hours</schedule>
+    </cron>
+    <cron>
+        <url>/rest/task/credential/password/clean</url>
+        <description>CredentialManager Password cleanup routine(5 hour)</description>
+        <schedule>every 5 hours</schedule>
+    </cron>
+    <cron>
+        <url>/rest/task/graph/day/new</url>
+        <description>GraphNewDayTask routine(once a day)</description>
+        <schedule>every day 00:00</schedule>
+    </cron>
+    <cron>
+        <url>/rest/task/graph/day/update</url>
+        <description>GraphUpdateDayTask routine(once a day)</description>
+        <schedule>every day 00:15</schedule>
+    </cron>
+    <cron>
+        <url>/rest/task/reports/update/points</url>
+        <description>reportsUpdatePoints routine(once a day)</description>
+        <schedule>every day 02:20</schedule>
+    </cron>
+</cronentries>

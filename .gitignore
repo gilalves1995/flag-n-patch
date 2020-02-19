@@ -1,0 +1,15 @@
+sendgrid.env
+
+target
+war
+node_modules
+old_configuration
+bundle.js
+*.iml
+
+*.zip
+*.tar.gz
+.*
+!.gitignore
+!.babelrc
+

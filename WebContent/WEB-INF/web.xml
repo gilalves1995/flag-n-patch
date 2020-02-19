@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xmlns="http://java.sun.com/xml/ns/javaee" xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+         xsi:schemaLocation="http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd" version="3.0">
+
+    <display-name>Flag n' Patch</display-name>
+    <welcome-file-list>
+        <welcome-file>index.html</welcome-file>
+    </welcome-file-list>
+    <error-page>
+        <error-code>404</error-code>
+        <location>/index.html</location>
+    </error-page>
+    <error-page>
+        <error-code>500</error-code>
+        <location>/index.html</location>
+    </error-page>
+    <servlet>
+        <servlet-name>jerseyServlet</servlet-name>
+        <servlet-class>org.glassfish.jersey.servlet.ServletContainer</servlet-class>
+        <init-param>
+            <param-name>jersey.config.server.provider.packages</param-name>
+            <param-value>pt.unl.fct.di.apdc.flagnpatch.resources.general;
+                pt.unl.fct.di.apdc.flagnpatch.resources.backOffice;
+                pt.unl.fct.di.apdc.flagnpatch.resources.frontOffice;
+                pt.unl.fct.di.apdc.flagnpatch.tasks;
+                pt.unl.fct.di.apdc.flagnpatch.resources.administration;
+                pt.unl.fct.di.apdc.flagnpatch.resources.INSECURE;
+            </param-value>
+        </init-param>
+        <init-param>
+            <param-name>jersey.config.server.provider.scanning.recursive</param-name>
+            <param-value>false</param-value>
+        </init-param>
+        <init-param>
+            <param-name>jersey.config.server.tracing.type</param-name>
+            <param-value>ALL</param-value>
+        </init-param>
+        <load-on-startup>1</load-on-startup>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>jerseyServlet</servlet-name>
+        <url-pattern>/rest/*</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>storage-servlet</servlet-name>
+        <servlet-class>pt.unl.fct.di.apdc.flagnpatch.servlets.GcsExampleServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>storage-servlet</servlet-name>
+        <url-pattern>/gcs/*</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>app</servlet-name>
+        <jsp-file>/index.html</jsp-file>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>app</servlet-name>
+        <url-pattern>/login</url-pattern>
+        <url-pattern>/register</url-pattern>
+        <url-pattern>/map</url-pattern>
+        <url-pattern>/report/*</url-pattern>
+    </servlet-mapping>
+    <security-constraint>
+        <web-resource-collection>
+            <web-resource-name>everything</web-resource-name>
+            <url-pattern>/*</url-pattern>
+        </web-resource-collection>
+        <user-data-constraint>
+            <transport-guarantee>CONFIDENTIAL</transport-guarantee>
+        </user-data-constraint>
+    </security-constraint>
+</web-app>
